@@ -10,8 +10,9 @@ const reverse = (inputArr) => {
   }
   return reversedArr;
 };
+
 testArr1 = [1, 2, 7, 4, 5];
-// console.log(reverse(testArr1));
+//console.log(reverse(testArr1));
 //or you could do arr.reverse()
 
 //challenge 2 rewrite
@@ -34,7 +35,7 @@ const findMissingNumbersInArray = (inputArr) => {
   return notInArr;
 };
 
-console.log(findMissingNumbersInArray(testArr1));
+//console.log(findMissingNumbersInArray(testArr1));
 
 // Challenge 3: Find Duplicates
 // Write a function that takes an array of integers as input and returns an array of all the duplicate numbers.
@@ -52,13 +53,33 @@ const findDuplicate = (inputArr) => {
   }
   return duplicatesArray;
 };
-console.log(findDuplicate(input));
+//console.log(findDuplicate(input));
 
 // Challenge 4: Sum of Two Values
 // Write a function that takes an array of integers and a target integer, it should find two integers in the array that sum to the target integer. The function should return an array of these two integers.
 // Example input: [1, 2, 3, 4, 5], 7
 // Expected output: [2, 5]
 
+const sumOfTwoIntegers = (inputArray, targetNumber) => {
+  let resultArr = [];
+
+  for (let first = 0; first < inputArray.length; first++) {
+    for (let second = 0; second < inputArray.length; second++) {
+      if (first == second) {
+        continue;
+      }
+      const sum = inputArray[first] + inputArray[second];
+      if (sum == targetNumber) {
+        resultArr.push(inputArray[first]);
+        resultArr.push(inputArray[second]);
+        break;
+      }
+    }
+  }
+  return resultArr;
+};
+
+console.log(sumOfTwoIntegers([1, 2, 3, 4, 5], 7));
 // Challenge 5: Array Chunking
 // Write a function that splits an array into subarray chunks of a specified size.
 // Example input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3
