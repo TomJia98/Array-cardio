@@ -79,18 +79,56 @@ const sumOfTwoIntegers = (inputArray, targetNumber) => {
   return resultArr;
 };
 
-console.log(sumOfTwoIntegers([1, 2, 3, 4, 5], 7));
+//console.log(sumOfTwoIntegers([1, 2, 3, 4, 5], 7));
 // Challenge 5: Array Chunking
 // Write a function that splits an array into subarray chunks of a specified size.
 // Example input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3
 // Expected output: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]
 
+const chunk = (inputArr, size) => {
+  let returnArr = [];
+  for (let i = 0; i < inputArr.length; i = i + size) {
+    let childArr = [];
+    for (let k = 0; k < size; k++) {
+      let position = i + k;
+      if (position >= inputArr.length) {
+        returnArr.push(childArr);
+        return returnArr;
+      }
+      childArr.push(inputArr[position]);
+    }
+    returnArr.push(childArr);
+  }
+  return returnArr;
+};
+
+//console.log(chunk([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
 // Challenge 6: Flatten Nested Arrays
 // Write a function that flattens an array of nested arrays into a single array.
 // Example input: [[1, 2, [3]], 4, [5, 6, [7, 8, [9]]]]
 // Expected output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+returnArr = [];
+const flattenArray = (inputArr) => {
+  for (const part of inputArr) {
+    if (Array.isArray(part)) {
+      flattenArray(part);
+    } else {
+      returnArr.push(part);
+    }
+  }
+  return returnArr;
+};
+//console.log(flattenArray([[1, 2, [3]], 4, [5, 6, [7, 8, [9]]]]));
 // Challenge 7: Array Intersection
 // Write a function that returns the intersection of two arrays (i.e., the elements that are common to both arrays).
 // Example input: [1, 2, 3, 4, 5], [4, 5, 6, 7, 8]
 // Expected output: [4, 5]
+
+const arrayIntesection = (inputArr1, inputArr2) => {
+  let arraysCombined = inputArr1.concat(inputArr2);
+  console.log(arraysCombined);
+  const result = findDuplicate(arraysCombined);
+  return result;
+};
+console.log(arrayIntesection([1, 2, 3, 4, 5], [4, 5, 6, 7, 8]));
